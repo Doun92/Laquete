@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votre légende</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <h1 id="titre"></h1>
+
+    <div id="formulaire_début">
+        <div>Ton nom: <input id="form_nom" type="text"></div>
+        <div>Ton genre: 
+            <select id="genre_liste" name="gender">
+                <option value="masc" selected>Masculin</option>
+                <option value="fem">Féminin</option>
+            </select>
+        </div>
+        <input id="submit_button" type="submit" value="Valider">
+    </div>
+
+    <div id="texte"></div>
+    <div id="actions"></div>
+
+    <div id="test"><button id="bouton_test">Test</button></div>
+
+    <script>
+        // Variables
+        const subButton = document.getElementById('submit_button');
+
+        const marcher = ""
+        const courir = ""
+
+        const title = document.getElementById("titre")
+        const text = document.getElementById("texte") 
+        const actions = document.getElementById("actions")
+
+        function Tableau01(){
+
+            text.innerHTML = "<p>Tu te trouves dans une village, ton village natal, qui est si pourri qu'il n'a pas de nom officiel.</p> <p>Tu t'ennuies fermement et décides, sur un coup de tête de devenir</p>"
+        }
+
+        // Détermine le nom du personnage
+        // La fonction supprime ensuite l'interface de création.
+        function creationPerso(){
+            nom = document.getElementById("form_nom").value
+            genre = document.getElementById("genre_liste").value
+
+            personnage = [nom, genre]
+
+            let formulaire_début = document.getElementById("formulaire_début")
+            while (formulaire_début.hasChildNodes())
+                formulaire_début.removeChild(formulaire_début.firstChild)
+            return personnage
+        }
+        let personnage = subButton.addEventListener('click', creationPerso, false); 
+
+        
+
+
+        let test = document.getElementById("test")
+        test.addEventListener('click',function(){
+            console.log(personnage[0], personnage[1])
+        })
+
+    </script>
+</body>
+</html>
