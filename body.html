@@ -37,10 +37,35 @@
         const title = document.getElementById("titre")
         const text = document.getElementById("texte") 
         const actions = document.getElementById("actions")
+        // Action template
+        //"<div><button></button></div>"
 
-        function Tableau01(){
+        function Tableau01(personnage){
+            //Titre
+            title.innerHTML = "<h1>Un nouveau départ</h1>"
 
-            text.innerHTML = "<p>Tu te trouves dans une village, ton village natal, qui est si pourri qu'il n'a pas de nom officiel.</p> <p>Tu t'ennuies fermement et décides, sur un coup de tête de devenir</p>"
+            //Description
+            if(personnage[1]=="masc"){
+                texte01 = "<p>Tu te trouves dans une village, ton village natal, qui est si pourri qu'il n'a pas de nom officiel.</p>"+
+                "<p>Tu t'ennuies fermement et décides, sur un coup de tête de devenir un aventurier.</p>"+
+                "<p>Que préfères-tu faire ?</p>"
+                bouton_armu = "<div>Un aventurier n'est rien sans sa fidèle épée.<button>Aller chez l'armurier</button></div>"
+                bouton_chemin = "<div>L'aventure vient à celui qui la provoque.<button>quitter le village</button></div>"
+            }else{
+                texte01 = "<p>Tu te trouves dans une village, ton village natal, qui est si pourri qu'il n'a pas de nom officiel.</p>"+
+                "<p>Tu t'ennuies fermement et décides, sur un coup de tête de devenir une aventurière.</p>"+
+                "<p>Que préfères-tu faire ?</p>"
+                bouton_armu = "<div>Une aventurière n'est rien sans sa fidèle épée.<button>Aller chez l'armurier</button></div>"
+                bouton_chemin = "<div>L'aventure vient à celle qui la provoque.<button>quitter le village</button></div>"
+            }
+
+            text.innerHTML = texte01
+
+            //Actions
+            actions.innerHTML = "<div>Tu préfères rester à la maison et attendre que l'aventure vienne à toi.<button>Rester à la maison</button></div>"+
+            bouton_armu + 
+            "<div>Tout le monde le sait, les tavernes sont des lieux de bavardage et de rumeurs. Tu y trouveras certainement ta première quête.<button>Aller à la taverne</button></div>"+
+            bouton_chemin
         }
 
         // Détermine le nom du personnage
@@ -54,6 +79,8 @@
             let formulaire_début = document.getElementById("formulaire_début")
             while (formulaire_début.hasChildNodes())
                 formulaire_début.removeChild(formulaire_début.firstChild)
+                
+                Tableau01(personnage)
             return personnage
         }
         let personnage = subButton.addEventListener('click', creationPerso, false); 
