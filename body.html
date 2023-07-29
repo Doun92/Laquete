@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Votre légende</title>
-    <style>
-
-    </style>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
 </head>
+
 <body>
     <h1 id="titre"></h1>
 
     <div id="formulaire_début">
         <div>Ton nom: <input id="form_nom" type="text"></div>
-        <div>Ton genre: 
+        <div>Ton genre:
             <select id="genre_liste" name="gender">
                 <option value="masc" selected>Masculin</option>
                 <option value="fem">Féminin</option>
@@ -27,72 +27,8 @@
 
     <div id="test"><button id="bouton_test">Test</button></div>
 
-    <script>
-        // Variables
-        const subButton = document.getElementById('submit_button');
-
-        const marcher = ""
-        const courir = ""
-
-        const title = document.getElementById("titre")
-        const text = document.getElementById("texte") 
-        const actions = document.getElementById("actions")
-        // Action template
-        //"<div><button></button></div>"
-
-        function Tableau01(personnage){
-            //Titre
-            title.innerHTML = "<h1>Un nouveau départ</h1>"
-
-            //Description
-            if(personnage[1]=="masc"){
-                texte01 = "<p>Tu te trouves dans une village, ton village natal, qui est si pourri qu'il n'a pas de nom officiel.</p>"+
-                "<p>Tu t'ennuies fermement et décides, sur un coup de tête de devenir un aventurier.</p>"+
-                "<p>Que préfères-tu faire ?</p>"
-                bouton_armu = "<div>Un aventurier n'est rien sans sa fidèle épée.<button>Aller chez l'armurier</button></div>"
-                bouton_chemin = "<div>L'aventure vient à celui qui la provoque.<button>quitter le village</button></div>"
-            }else{
-                texte01 = "<p>Tu te trouves dans une village, ton village natal, qui est si pourri qu'il n'a pas de nom officiel.</p>"+
-                "<p>Tu t'ennuies fermement et décides, sur un coup de tête de devenir une aventurière.</p>"+
-                "<p>Que préfères-tu faire ?</p>"
-                bouton_armu = "<div>Une aventurière n'est rien sans sa fidèle épée.<button>Aller chez l'armurier</button></div>"
-                bouton_chemin = "<div>L'aventure vient à celle qui la provoque.<button>quitter le village</button></div>"
-            }
-
-            text.innerHTML = texte01
-
-            //Actions
-            actions.innerHTML = "<div>Tu préfères rester à la maison et attendre que l'aventure vienne à toi.<button>Rester à la maison</button></div>"+
-            bouton_armu + 
-            "<div>Tout le monde le sait, les tavernes sont des lieux de bavardage et de rumeurs. Tu y trouveras certainement ta première quête.<button>Aller à la taverne</button></div>"+
-            bouton_chemin
-        }
-
-        // Détermine le nom du personnage
-        // La fonction supprime ensuite l'interface de création.
-        function creationPerso(){
-            nom = document.getElementById("form_nom").value
-            genre = document.getElementById("genre_liste").value
-
-            personnage = [nom, genre]
-
-            let formulaire_début = document.getElementById("formulaire_début")
-            while (formulaire_début.hasChildNodes())
-                formulaire_début.removeChild(formulaire_début.firstChild)
-                
-                Tableau01(personnage)
-            return personnage
-        }
-        let personnage = subButton.addEventListener('click', creationPerso, false); 
-
-        
-
-
-        let test = document.getElementById("test")
-        test.addEventListener('click',function(){
-            console.log(personnage[0], personnage[1])
-        })
-
-    </script>
+    <script src="test.js"></script>
+    <script src="initialisation.js"></script>
+    <script src="chapitres/01_chapitre.js"></script>
 </body>
 </html>
